@@ -1,0 +1,63 @@
+body{
+    color: #ffffff;
+    background-image: url('Assets/R.png');
+}
+
+nav{
+    font-family: 'Press Start 2P', cursive;
+    color: #f0ff1d;
+    background-color: #1bafdb;
+    text-shadow: 4px 0px black;
+    padding: 5px;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Move start button div to the middle */
+#start-screen, #game-over{
+    font-family:monospace, Arial, Helvetica, sans-serif;
+    text-shadow: 4px 0px black;
+    color: #ffffff;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top:  -50px;
+    margin-left: -140px;
+    height: 200px;
+    width: 250px;
+    text-align: center;
+}
+
+/* Edit text of the button */
+#start-screen a, #game-over a{
+    border: 3px solid #000000;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #1bafdb;
+    color: #f0ff1d;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: block;
+    width: 200px;
+    text-align: center;
+    font-size: 1.2em;
+    display: inline-block;
+}
+
+/* Make button change when mouse hovers */
+#start-screen a:hover, #game-over a:hover{
+    background-color: #f0ff1d;
+    color: #1bafdb;
+
+}
+
+#container {
+    background-color: rgb(68, 64, 64);
+    width: 825px;
+    height: 825px;
+    border: solid black 5px;
+    margin-left:auto;
+    margin-right: auto;
+}

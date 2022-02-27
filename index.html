@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Viltrum Violation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav><h1>Viltrum Violation</h1></nav>
+    
+    <!-- Create Canvas element to draw objects onto -->
+    <canvas id="start-canvas" style="display:none"></canvas>
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen" style="display:block">
+        <a href="#" onclick="startGame()">Start Game</a>
+    </div>
+
+    <!-- Game over screen -->
+    <div id="game-over" style="display:none">
+        <h1>Game Over</h1>
+        <a href="#" onclick="startGame()">Start Game</a>
+    </div>
+
+    <!-- Create a container that holds entire game -->
+    <div id="container">
+        <canvas id="myCanvas" width="600" height="550"></canvas>
+      </div>
+<!-- Place Java script at end of page to load at end so it loads CSS and other elements faster -->
+<script src="app.js"></script>
+</body>
+</html>
