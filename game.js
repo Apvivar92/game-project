@@ -1,6 +1,6 @@
 // Need to select canva element to draw onto
-const canvas = document.getElementById(#myCanvas);
-const context = canvas.getContext('2d');
+const canvas = document.getElementById('#myCanvas');
+const context = myCanvas.getContext('2d');
 
 canvas
 
