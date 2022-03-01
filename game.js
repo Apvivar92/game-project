@@ -1,8 +1,9 @@
 // Need to select canva element to draw onto
-const canvas = document.getElementById('#myCanvas');
-const context = myCanvas.getContext('2d');
+const canvas = document.getElementById('myCanvas');
+const context = canvas.getContext('2d');
 
-canvas
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
 // create user ship with a class then with constructors, define Player's properties.
 class Player {
@@ -18,8 +19,8 @@ class Player {
         }
         // Players sprite image
         // this.image = 
-        this.width = 23
-        this. height = 23
+        this.width = 100
+        this. height = 100
     }
     
     draw() {

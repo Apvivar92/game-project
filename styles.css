@@ -79,4 +79,7 @@ button{
 #myCanvas {
     width: 825px;
     height: 825px;
+    border: solid black 5px;
+    margin-left:auto;
+    margin-right: auto;
 }

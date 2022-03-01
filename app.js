@@ -22,6 +22,7 @@ function gameOver() {
     startGameDiv.style.display = "none";
     gameCanvas.style.display = "none";
     gameOver.style.display = "block";
+    gameOver();
 };
 
 // Make the screen swap between the start screen to the game when start game button is pressed
