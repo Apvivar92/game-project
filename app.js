@@ -28,6 +28,8 @@ function gameOver() {
 // Make the screen swap between the start screen to the game when start game button is pressed
 function toggleDisplay(id,toggle) {
     let element = document.getElementById(id);
+    // Ternary statement taking 3 operands instead of if else statement
+    // Cite: https://www.javatpoint.com/javascript-ternary-operator#:~:text=The%20ternary%20operator%20assigns%20a%20value%20to%20the,is%20the%20same%20as%20the%20if-else%20conditional%20statement.
     let display = ( toggle ) ? 'block' : 'none';
     element.style.display = display;
 }
