@@ -1,4 +1,4 @@
-// Need to select canva element to draw onto
+// Need to select canvas element to draw onto
 const canvas = document.getElementById('myCanvas');
 const context = canvas.getContext('2d');
 
@@ -18,29 +18,72 @@ class Player {
             x:0
         }
         // Players sprite image
-        // const image = new Image()
-        // image.src = 'Assets/userShip.png'
-
-        // this.image = image;
+        const image = new Image()
+        image.src = './Assets/userShip.png'
+        this.image = image
         this.width = 50
         this. height = 50
+        
     }
-    
+
     draw() {
-        context.fillStyle = 'red'
-        context.fillRect(this.position.x, this.position.y, this.width, this.height)
-        // context.drawImage(this.image, this.position.x, this.position.y)
+        // context.fillStyle = 'red'
+        // context.fillRect(this.position.x, this.position.y, this.width, this.height)
+        context.drawImage(this.image, this.position.x, this.position.y)
+        this.position.x,
+        this.width,
+        this.height
+        console.log(this.image)
+    }
+
+    update() {
+        if(player){
+        this.draw()
+        this.position.x += this.velocity.x  
+        }
     }
 }
 
 const player = new Player()
 player.draw()
 
-
 // image won't load due to being called once.
 // create a function to call it multiple times to load image.
 // Cite for requestAnimationFrame function: https://techfunda.com/howto/963/requestanimationframe#:~:text=requestAnimationFrame%20is%20an%20method%20in%20JavaScript%20%7B%20requestAnimationFrame,an%20animation%20before%20the%20next%20level%20of%20animation.
 function animate() {
     requestAnimationFrame(animate)
-    console.log("it's working");
+    player.draw()
 }
+
+// animate()
+
+// user inputs to control ship
+addEventListener('keydown', ({key}) => {
+    switch (key) {
+        case 'ArrowLeft':
+            console.log('left')
+            player.velocity.x = -5
+            break
+        case 'ArrowRight':
+            console.log('right')
+            player.velocity.x = 5
+            break
+        case ' ':
+            console.log('FIRE!')
+    }
+})
+
+addEventListener('keyup', ({key}) => {
+    switch (key) {
+        case 'ArrowLeft':
+            console.log('Stop left')
+            player.velocity.x = 0
+            break
+        case 'ArrowRight':
+            console.log('stop right')
+            player.velocity.x = 0
+            break
+        case ' ':
+            console.log('Cease FIRE!')
+    }
+})
