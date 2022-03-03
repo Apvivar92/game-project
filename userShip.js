@@ -8,11 +8,6 @@ canvas.height = window.innerHeight;
 // create user ship with a class then with constructors, define Player's properties.
 class Player {
     constructor() {
-        // players position
-        this.position = {
-            x: canvas.width / 2,
-            y: canvas.height - 70
-        }
         // Player's movement Speed
         this.velocity = {
             x:0
@@ -23,24 +18,30 @@ class Player {
         this.image = image
         this.width = 100
         this. height = 100
+        // players position
+        this.position = {
+            x: canvas.width / 2 - this.width / 2,
+            y: canvas.height - this.height - 20
+        }
         
     }
 
     draw() {
         // context.fillStyle = 'red'
         // context.fillRect(this.position.x, this.position.y, this.width, this.height)
-        context.drawImage(this.image, this.position.x, this.position.y,
-            this.width, this.height)
-        // this.position.x,
-        // this.width,
-        // this.height
-        // console.log(this.image)
+        context.drawImage(
+            this.image, 
+            this.position.x, 
+            this.position.y,
+            this.width,
+            this.height
+            )
     }
 
     update() {
-        if(player){
+        if(this.image){
         this.draw()
-        this.position.x += this.velocity.x  
+        this.position.x += this.velocity.x
         }
     }
 }
@@ -53,7 +54,9 @@ player.draw()
 // Cite for requestAnimationFrame function: https://techfunda.com/howto/963/requestanimationframe#:~:text=requestAnimationFrame%20is%20an%20method%20in%20JavaScript%20%7B%20requestAnimationFrame,an%20animation%20before%20the%20next%20level%20of%20animation.
 function animate() {
     requestAnimationFrame(animate)
-    player.draw()
+    context.fillStyle = 'black'
+    context.fillRect(0, 0, canvas.width, canvas.height)
+    player.update()
 }
 
 animate()
