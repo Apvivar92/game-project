@@ -21,19 +21,20 @@ class Player {
         const image = new Image()
         image.src = './Assets/userShip.png'
         this.image = image
-        this.width = 50
-        this. height = 50
+        this.width = 100
+        this. height = 100
         
     }
 
     draw() {
         // context.fillStyle = 'red'
         // context.fillRect(this.position.x, this.position.y, this.width, this.height)
-        context.drawImage(this.image, this.position.x, this.position.y)
-        this.position.x,
-        this.width,
-        this.height
-        console.log(this.image)
+        context.drawImage(this.image, this.position.x, this.position.y,
+            this.width, this.height)
+        // this.position.x,
+        // this.width,
+        // this.height
+        // console.log(this.image)
     }
 
     update() {
@@ -55,7 +56,7 @@ function animate() {
     player.draw()
 }
 
-// animate()
+animate()
 
 // user inputs to control ship
 addEventListener('keydown', ({key}) => {
