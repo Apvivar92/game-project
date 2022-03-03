@@ -2,8 +2,8 @@
 const canvas = document.getElementById('myCanvas');
 const context = canvas.getContext('2d');
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 // create user ship with a class then with constructors, define Player's properties.
 class Player {
@@ -11,7 +11,7 @@ class Player {
         // players position
         this.position = {
             x: canvas.width / 2,
-            y: canvas.height
+            y: canvas.height - 70
         }
         // Player's movement Speed
         this.velocity = {
