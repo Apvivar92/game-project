@@ -1,18 +1,45 @@
 //start screen for player to read instructions and begin.
 let startGameDiv = document.getElementById("start-screen");
-console.log(startGameDiv);
 let gameCanvas = document.getElementById("myCanvas");
 let gameOverDiv = document.getElementById("game-over");
 
 
+gameCanvas.width = window.innerWidth;
+gameCanvas.height = window.innerHeight;
+
+let context = gameCanvas.getContext('2d');
+let projectiles = [];
+let player = new Player(gameCanvas, projectiles);
+
 function startGame() {
+    
     // Add toggle function into startGame function to toggle between start screen to game
-    // False = start-Screen
-    // true = game
     startGameDiv.style.display = "none";
     gameCanvas.style.display = "block";
     gameOverDiv.style.display = "none";
+
+
+    animate()
+    
+
+
+
+
+
+
+
+
+
 };
+
+function animate() {
+    requestAnimationFrame(animate)
+    context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+    player.update()
+    projectiles.forEach((projectile) => {
+        projectile.update()
+    })
+}
 
 // Game over screen for when player fails
 function gameOver() {
@@ -29,3 +56,16 @@ function toggleDisplay(id,toggle) {
     let display = ( toggle ) ? 'block' : 'none';
     element.style.display = display;
 }
+
+// image won't load due to being called once.
+// create a function to call it multiple times to load image.
+// Cite for requestAnimationFrame function: https://techfunda.com/howto/963/requestanimationframe#:~:text=requestAnimationFrame%20is%20an%20method%20in%20JavaScript%20%7B%20requestAnimationFrame,an%20animation%20before%20the%20next%20level%20of%20animation.
+// function animate() {
+//     requestAnimationFrame(animate)
+//     // context.fillStyle = 'black'
+//     // context.fillRect(0, 0, gameCanvas.width, gameCanvas.height)
+//     player.update()
+//     // projectiles.forEach((projectile) => {
+//     //     projectile.update()
+//     // })
+// }
