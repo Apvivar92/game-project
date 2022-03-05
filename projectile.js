@@ -6,7 +6,8 @@ class Projectile {
     this.position = position;
     this.velocity = velocity;
     this.radius = 5;
-  }
+    this.hitbox = new Hitbox(this.position.x, this.position.y, this.width, this.height);
+  };
 
   draw() {
     this.context.beginPath();
@@ -21,18 +22,24 @@ class Projectile {
     this.context.fillStyle = 'red';
     this.context.fill();
     this.context.closePath();
-  }
+  };
+
   // update animations
   update() {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
+    this.hitbox.updateHitboxPosition(this.position.x, this.position.y);
     this.draw();
-  }
+  };
 
   getPosition() {
     return {
       x: this.position.x,
       y: this.position.y,
     };
-  }
-}
+  };
+
+  getHitbox() {
+    return this.hitbox;
+  };
+};

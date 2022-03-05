@@ -8,6 +8,7 @@ class Alien {
       x: 0,
       y: 0,
     };
+    
     // Players sprite image
     const image = new Image();
     image.src = './Assets/R (1).png';
@@ -22,8 +23,15 @@ class Alien {
         x: this.canvas.width / 2 - this.width / 2,
         y: this.canvas.height / 2,
       };
+      
+      this.hitbox = new Hitbox(
+        this.position.x,
+        this.position.y,
+        this.width,
+        this.height
+        );
     };
-  }
+  };
 
   draw() {
     // context.fillStyle = 'red'
@@ -31,7 +39,7 @@ class Alien {
     if (this.image) {
       this.context.drawImage(
         this.image,
-        this.position.x,
+        this.position.x, 
         this.position.y,
         this.width,
         this.height
@@ -44,6 +52,8 @@ class Alien {
       this.draw();
       this.position.x += this.velocity.x;
       this.position.y += this.velocity.y;
+      this.hitbox.updateHitboxPosition(this.position.x, this.position.y);
+      this.draw();
     }
   }
 
@@ -52,5 +62,9 @@ class Alien {
       x: this.position.x,
       y: this.position.y,
     };
-  }
-}
+  };
+
+  getHitbox() {
+    return this.hitbox;
+  };
+};
