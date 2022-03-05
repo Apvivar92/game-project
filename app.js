@@ -1,8 +1,8 @@
 //start screen for player to read instructions and begin.
-let startGameDiv = document.getElementById("start-screen");
-let gameCanvas = document.getElementById("myCanvas");
-let gameOverDiv = document.getElementById("game-over");
-var frameCount = 0;
+let startGameDiv = document.getElementById('start-screen');
+let gameCanvas = document.getElementById('myCanvas');
+let gameOverDiv = document.getElementById('game-over');
+let frameCount = 0;
 
 gameCanvas.width = window.innerWidth;
 gameCanvas.height = window.innerHeight;
@@ -13,53 +13,54 @@ let player = new Player(gameCanvas, projectiles);
 let alien = new Alien(gameCanvas);
 // let grid = [new Grid(gameCanvas)];
 
-
 function startGame() {
-    
-    // Add toggle function into startGame function to toggle between start screen to game
-    startGameDiv.style.display = "none";
-    gameCanvas.style.display = "block";
-    gameOverDiv.style.display = "none";
+  // Add toggle function into startGame function to toggle between start screen to game
+  startGameDiv.style.display = 'none';
+  gameCanvas.style.display = 'block';
+  gameOverDiv.style.display = 'none';
 
-    animate()
-    
-};
+  animate();
+}
 
 function animate() {
-    requestAnimationFrame(animate);
-    context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
-    alien.update();
-    player.update();
-    
-    // if(frameCount % 600 === 0){
-    //     console.log("Player Position" + player.getPosition());
-    //     console.log("Alien Position" + alien.getPosition());
-    // }
+  requestAnimationFrame(animate);
+  context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  alien.update();
+  player.update();
 
-    projectiles.forEach((projectile) => {
-        projectile.update();
-        
-    //     if(frameCount % 600 === 0){
-    //     console.log("Projectile Position" + projectile.getPosition());
-    // }
-    });
+  if (frameCount % 600 === 0) {
+    printPosition('Player ', player.getPosition());
+    printPosition('Alien ', alien.getPosition());
+  }
 
-    // grids.forEach(grid => {
-    //     grid.update()
-    //     grid.alien.forEach(alien => {
-    //         alien.update()
-    //     })
-    // })
-    frameCount++;
+  projectiles.forEach((projectile, i) => {
+    projectile.update();
 
+    if (frameCount % 600 === 0) {
+      printPosition('Projectile ' + i.toString(), projectile.getPosition());
+    }
+  });
+
+  // grids.forEach(grid => {
+  //     grid.update()
+  //     grid.alien.forEach(alien => {
+  //         alien.update()
+  //     })
+  // })
+  frameCount++;
+}
+
+function printPosition(tag, { x, y }) {
+  console.log(tag);
+  console.log(x + ' ' + y);
 }
 
 // Game over screen for when player fails
 function gameOver() {
-    startGameDiv.style.display = "none";
-    gameCanvas.style.display = "none";
-    gameOverDiv.style.display = "block";
-};
+  startGameDiv.style.display = 'none';
+  gameCanvas.style.display = 'none';
+  gameOverDiv.style.display = 'block';
+}
 
 // Make the screen swap between the start screen to the game when start game button is pressed
 // function toggleDisplay(id,toggle) {
@@ -69,4 +70,3 @@ function gameOver() {
 //     let display = ( toggle ) ? 'block' : 'none';
 //     element.style.display = display;
 // }
-
