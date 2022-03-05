@@ -12,6 +12,7 @@ class Player {
         const image = new Image()
         image.src = './Assets/userShip.png'
         this.image = image
+        // Render the images to scale of canvas.. Hard code img size causes img to squish
         this.width = image.width * .15
         this. height = image.height *.15
 
@@ -53,8 +54,8 @@ class Player {
                         )
                     )
                     break;
-            }
-        })
+            };
+        });
 
         addEventListener('keyup', ({key}) => {
             switch (key) {
@@ -68,9 +69,10 @@ class Player {
                     break;
                 case ' ':
                     console.log('Cease FIRE!');
-            }
-        })
-    }
+                    break;
+            };
+        });
+    };
 
     draw() {
         // context.fillStyle = 'red'
@@ -82,15 +84,22 @@ class Player {
                 this.position.y,
                 this.width,
                 this.height
-            )
+            );
         };
-    }
+    };
 
     update() {
         if(this.image){
-            this.draw()
-            this.position.x += this.velocity.x
-        }
-    }
-}
+            this.position.x += this.velocity.x;
+            this.draw();
+        };
+    };
+
+    getPosition() {
+        return {
+            x: this.position.x,
+            y: this.position.y
+        };
+    };
+};
 

@@ -14,6 +14,7 @@ class Alien {
         image.onload = () => {
             // const scale = 1
             this.image = image
+            // Render the images to scale of canvas.. Hard code img size causes img to squish
             this.width = image.width * .1
             this.height = image.height * .1
             // Aliens position
@@ -45,5 +46,12 @@ class Alien {
             this.position.y += this. velocity.y
         }
     }
+
+    getPosition() {
+        return {
+            x: this.position.x,
+            y: this.position.y
+        }
+    };
 }
 

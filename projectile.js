@@ -22,4 +22,11 @@ class Projectile {
         this.position.y += this.velocity.y;
         this.draw();
     }
+
+    getPosition() {
+        return {
+            x: this.position.x,
+            y: this.position.y
+        }
+    };
 }
