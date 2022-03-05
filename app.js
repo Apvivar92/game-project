@@ -29,13 +29,16 @@ function runGame() {
     projectile.update();
 
     // checks if object's hitbox intersects
-    if(projectile.getHitbox().intersects(alien.getHitbox())){
+    if(projectile.getHitbox().intersects(alien.getHitbox())){      
+      // console.log("Hit");
       // projectile hit alien - handle collision
-      console.log("Hit");
-      
+      projectiles = projectiles.filter((v, projectileIndex) => {
+        return p != projectileIndex;
+      });
+      player.updateProjectiles(projectiles);
     }
     else {
-      console.log("No hit");
+      // console.log("No hit");
     }
 
     

@@ -87,14 +87,14 @@ class Player {
     }
   }
 
+  updateProjectiles(projectiles) {
+    this.projectiles = projectiles;
+  }
+
   getPosition() {
     return {
       x: this.position.x,
       y: this.position.y,
     };
-  }
-
-  updateProjectiles(projectiles) {
-    this.projectiles = projectiles;
   }
 }

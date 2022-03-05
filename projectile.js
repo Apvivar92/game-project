@@ -11,6 +11,7 @@ class Projectile {
 
   draw() {
     this.context.beginPath();
+    // have projectile object travel in canvas
     // cite https://www.javascripttutorial.net/web-apis/javascript-arc/#:~:text=Introduction%20to%20the%20%EE%80%80JavaScript%20arc%EE%80%81%20%28%29%20method.%20The,draws%20a%20circular%20%EE%80%80arc%EE%80%81%20centered%20at%20%28x%2Cy%20
     this.context.arc(
       this.position.x,
