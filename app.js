@@ -24,6 +24,22 @@ function runGame() {
   context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
   alien.update();
   player.update();
+
+  projectiles.forEach((projectile, p) => {
+    projectile.update();
+
+    // checks if object's hitbox intersects
+    if(projectile.getHitbox().intersects(alien.getHitbox())){
+      // projectile hit alien - handle collision
+      console.log("Hit");
+      
+    }
+    else {
+      console.log("No hit");
+    }
+
+    
+  });
 };
 
 // Game over screen for when player fails
