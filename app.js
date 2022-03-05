@@ -10,6 +10,8 @@ gameCanvas.height = window.innerHeight;
 let context = gameCanvas.getContext('2d');
 let projectiles = [];
 let player = new Player(gameCanvas, projectiles);
+let alien = new Alien(gameCanvas);
+// let grids = [new Grid()];
 
 function startGame() {
     
@@ -18,27 +20,25 @@ function startGame() {
     gameCanvas.style.display = "block";
     gameOverDiv.style.display = "none";
 
-
     animate()
     
-
-
-
-
-
-
-
-
-
 };
 
 function animate() {
     requestAnimationFrame(animate)
     context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+    alien.update()
     player.update()
     projectiles.forEach((projectile) => {
         projectile.update()
     })
+
+    // grids.forEach(grid => {
+    //     grid.update()
+    //     grid.alien.forEach(alien => {
+    //         alien.update()
+    //     })
+    // })
 }
 
 // Game over screen for when player fails
@@ -56,6 +56,16 @@ function toggleDisplay(id,toggle) {
     let display = ( toggle ) ? 'block' : 'none';
     element.style.display = display;
 }
+
+
+
+
+
+
+
+
+
+
 
 // image won't load due to being called once.
 // create a function to call it multiple times to load image.

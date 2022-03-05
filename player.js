@@ -1,5 +1,3 @@
-
-
 // create user ship with a class then with constructors, define Player's properties.
 class Player {
     constructor(canvas, projectiles) {
@@ -10,12 +8,13 @@ class Player {
         this.velocity = {
             x:0
         }
-        // Players sprite image
+        // Players ship image
         const image = new Image()
         image.src = './Assets/userShip.png'
         this.image = image
-        this.width = 100
-        this. height = 100
+        this.width = image.width * .15
+        this. height = image.height *.15
+
         // players position
         this.position = {
             x: this.canvas.width / 2 - this.width / 2,
@@ -76,13 +75,15 @@ class Player {
     draw() {
         // context.fillStyle = 'red'
         // context.fillRect(this.position.x, this.position.y, this.width, this.height)
-        this.context.drawImage(
-            this.image, 
-            this.position.x, 
-            this.position.y,
-            this.width,
-            this.height
+        if(this.image){
+            this.context.drawImage(
+                this.image, 
+                this.position.x, 
+                this.position.y,
+                this.width,
+                this.height
             )
+        };
     }
 
     update() {

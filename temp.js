@@ -27,6 +27,18 @@ const player = new Player()
 const projectiles = []
 player.draw()
 
+// image won't load due to being called once.
+// create a function to call it multiple times to load image.
+// Cite for requestAnimationFrame function: https://techfunda.com/howto/963/requestanimationframe#:~:text=requestAnimationFrame%20is%20an%20method%20in%20JavaScript%20%7B%20requestAnimationFrame,an%20animation%20before%20the%20next%20level%20of%20animation.
+function animate() {
+    requestAnimationFrame(animate)
+    context.fillStyle = 'black'
+    context.fillRect(0, 0, canvas.width, canvas.height)
+    player.update()
+    projectiles.forEach((projectile) => {
+        projectile.update()
+    })
+}
 
 animate()
 
