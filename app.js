@@ -61,7 +61,12 @@ function runGame() {
       spawnAliens();
     }
 
-    if (aliens.length > 50) {
+    // if difficulty rating = 15 = win
+    // if aliens exceed over 30 = lose
+    if (aliens.length > 30) {
+      gameOver();
+    }
+    else if (difficultyRating == 15){
       gameOver();
     }
 
@@ -69,7 +74,6 @@ function runGame() {
   });
 }
 
-// when difficultyRating increases spawn aliens at random qty
 function spawnAliens() {
   for(let i = 0; i < difficultyRating; i++){
     aliens.push(
@@ -96,14 +100,19 @@ function updateDifficultyRating() {
 
 // Game over screen for when player fails
 function gameOver() {
-updateFinalScore();
+  updateFinalScore();
 
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'none';
   gameOverDiv.style.display = 'block';
+  
 };
 
 function updateFinalScore() {
   let finalScore = document.getElementById('finalscore');
   finalScore.innerHTML = score;
+};
+
+function reloadGame() {
+  document.location.reload();
 };
