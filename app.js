@@ -2,6 +2,13 @@
 let startGameDiv = document.getElementById('start-screen');
 let gameCanvas = document.getElementById('myCanvas');
 let gameOverDiv = document.getElementById('game-over');
+let scoreboard = document.getElementById('scoreboard');
+let scoreCounter= document.getElementById('scorecounter');
+let difficultyCounter = document.getElementById('difficultycounter');
+
+let difficultyRating = 1;
+
+let score = 0;
 
 gameCanvas.width = window.innerWidth;
 gameCanvas.height = window.innerHeight;
@@ -9,45 +16,94 @@ gameCanvas.height = window.innerHeight;
 let context = gameCanvas.getContext('2d');
 let projectiles = [];
 let player = new Player(gameCanvas, projectiles);
-let alien = new Alien(gameCanvas);
+let aliens = [];
 
 function startGame() {
   // Add toggle function into startGame function to toggle between start screen to game
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'block';
   gameOverDiv.style.display = 'none';
+  scoreboard.style.display = 'block';
+
+  spawnAliens();
 
   setInterval(runGame, 15);
+  setInterval(increaseDifficulty, 10000);
 };
 
 function runGame() {
   context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
-  alien.update();
   player.update();
 
-  projectiles.forEach((projectile, p) => {
-    projectile.update();
+  aliens.forEach((alien, a) => {
+    alien.update();
 
-    // checks if object's hitbox intersects
-    if(projectile.getHitbox().intersects(alien.getHitbox())){      
-      // console.log("Hit");
-      // projectile hit alien - handle collision
-      projectiles = projectiles.filter((v, projectileIndex) => {
-        return p != projectileIndex;
-      });
-      player.updateProjectiles(projectiles);
-    }
-    else {
-      // console.log("No hit");
+    projectiles.forEach((projectile, p) => {
+      projectile.update();
+
+      if (alien.getHitbox().intersects(projectile.getHitbox())) {
+        updateScore();
+
+        aliens = aliens.filter((_v, alienToRemove) => {
+          return a != alienToRemove;
+        });
+
+        projectiles = projectiles.filter((_v, projToRemove) => {
+          return p != projToRemove;
+        });
+
+        player.updateProjectiles(projectiles);
+      }
+    });
+
+    if (aliens.length == 0) {
+      increaseDifficulty();
+      spawnAliens();
     }
 
-    
+    if (aliens.length > 50) {
+      gameOver();
+    }
+
+    updateDifficultyRating();
   });
+}
+
+// when difficultyRating increases spawn aliens at random qty
+function spawnAliens() {
+  for(let i = 0; i < difficultyRating; i++){
+    aliens.push(
+      new Alien(gameCanvas, Math.random() * 800, Math.random() * 700)
+    );
+  };
+};
+
+// Need a way to update score on the html
+function updateScore() {
+  score += difficultyRating;
+  scoreCounter.innerHTML = score;
+};
+
+function increaseDifficulty() {
+  difficultyRating++;
+  updateDifficultyRating();
+  spawnAliens();
+};
+
+function updateDifficultyRating() {
+  difficultyCounter.innerHTML = difficultyRating;
 };
 
 // Game over screen for when player fails
 function gameOver() {
+updateFinalScore();
+
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'none';
   gameOverDiv.style.display = 'block';
-}
+};
+
+function updateFinalScore() {
+  let finalScore = document.getElementById('finalscore');
+  finalScore.innerHTML = score;
+};

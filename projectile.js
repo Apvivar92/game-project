@@ -6,6 +6,7 @@ class Projectile {
     this.position = position;
     this.velocity = velocity;
     this.radius = 5;
+    
     this.hitbox = new Hitbox(this.position.x, this.position.y, this.width, this.height);
   };
 

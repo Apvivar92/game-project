@@ -36,6 +36,7 @@ class Player {
           this.velocity.x = 5;
           break;
         case ' ':
+          console.log("shoot")
           this.projectiles.push(
             new Projectile(this.canvas, {
               position: {
@@ -52,18 +53,18 @@ class Player {
       }
     });
 
-    addEventListener('keyup', ({ key }) => {
-      switch (key) {
-        case 'ArrowLeft':
-          this.velocity.x = 0;
-          break;
-        case 'ArrowRight':
-          this.velocity.x = 0;
-          break;
-        case ' ':
-          break;
-      }
-    });
+    // addEventListener('keyup', ({ key }) => {
+    //   switch (key) {
+    //     case 'ArrowLeft':
+    //       this.velocity.x = 0;
+    //       break;
+    //     case 'ArrowRight':
+    //       this.velocity.x = 0;
+    //       break;
+    //     case ' ':
+    //       break;
+    //   }
+    // });
   }
 
   draw() {

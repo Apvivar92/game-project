@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Viltrum Violation</title>
   <meta charset="UTF-8" />
@@ -10,10 +11,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <nav><h1>Viltrum Violation</h1></nav>
+  <nav>
+    <h1>Viltrum Violation</h1>
+  </nav>
+
+  <!-- need a scoreboard  -->
+  <p id="scoreboard" style="display: none; text-align: center;">Score: <span id="scorecounter">0</span> Difficulty:
+    <span id="difficultycounter">1</span></p>
+
   <!-- Create a container that holds entire game -->
   <div id="container">
+
      <!-- Create Canvas element to draw objects onto -->
      <canvas id="myCanvas" style="display:none"></canvas>
      
@@ -34,6 +44,8 @@
     <!-- Game over screen -->
     <div id="game-over" style="display:none">
         <h1>Game Over</h1>
+        <h2>SCORE</h2>
+        <h2 id="finalscore">0</h2>
         <button onclick="startGame()">Start Game</button>
     </div>
   </div>
