@@ -14,7 +14,12 @@ nav{
     text-align: center;
 }
 
-
+#scoreboard, #scorecounter, #difficultyboard, #difficultycounter{
+    font-family: 'Press Start 2P', cursive;
+    color: #f0ff1d;
+    background-color: #1bafdb;
+    text-shadow: 4px 0px black;
+}
 
 /* Move start button div to the middle */
 #start-screen, #game-over, #game-win{

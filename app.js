@@ -65,10 +65,10 @@ function runGame() {
 
     // if difficulty rating = 15 = win
     // if aliens exceed over 30 = lose
-    if (aliens.length > 30) {
+    if (aliens.length > 45) {
       gameOver();
     }
-    else if (difficultyRating == 5){
+    else if (difficultyRating == 15){
       gameWin();
     }
 
