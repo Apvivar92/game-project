@@ -83,7 +83,23 @@ class Player {
 
   update() {
     if (this.image) {
-      this.position.x += this.velocity.x;
+      // keep player ship from leaving canvas container
+      if (
+        this.position.x < this.canvas.width - this.width &&
+        this.position.x > 0
+      ) 
+      
+      {
+        this.position.x += this.velocity.x;
+      } 
+      else if (this.position.x > this.canvas.width - this.width) {
+        this.position.x -= 15;
+        this.velocity.x = 0;
+      } 
+      else if (this.position.x < 0) {
+        this.position.x += 15;
+        this.velocity.x = 0;
+      }
       this.draw();
     }
   }

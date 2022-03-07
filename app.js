@@ -15,12 +15,13 @@ gameCanvas.width = window.innerWidth;
 gameCanvas.height = window.innerHeight;
 
 let context = gameCanvas.getContext('2d');
+
 let projectiles = [];
 let player = new Player(gameCanvas, projectiles);
 let aliens = [];
 
 function startGame() {
-  // Add toggle function into startGame function to toggle between start screen to game
+  // Swap displays
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'block';
   gameOverDiv.style.display = 'none';
@@ -35,6 +36,7 @@ function startGame() {
 
 function runGame() {
   context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+
   player.update();
 
   aliens.forEach((alien, a) => {
@@ -64,7 +66,7 @@ function runGame() {
     }
 
     // if difficulty rating = 15 = win
-    // if aliens exceed over 30 = lose
+    // if aliens exceed over 45 = lose
     if (aliens.length > 45) {
       gameOver();
     }
@@ -75,6 +77,22 @@ function runGame() {
     updateDifficultyRating();
   });
 }
+
+// window.onload = function () {
+//   let image = new Image();
+//   image.src = 'Assets/City.png'
+
+//   image.onload = function () {
+//     fillCanvas(image);
+//   };
+
+//   function fillCanvas(image) {
+//     this.canvas.width = image.width;
+//     this.canvas.width = image.height;
+
+//     this.context.drawImage(image, 0, 0);
+//   };
+// };
 
 function spawnAliens() {
   for(let i = 0; i < difficultyRating; i++){
@@ -107,6 +125,7 @@ function gameOver() {
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'none';
   gameOverDiv.style.display = 'block';
+  gameWinDiv.style.display = 'none';
   
 };
 
@@ -118,7 +137,6 @@ function gameWin() {
   gameOverDiv.style.display = 'none';
   gameWinDiv.style.display = 'block';
 
-  
 };
 
 function updateFinalScore() {

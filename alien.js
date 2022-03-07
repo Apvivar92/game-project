@@ -9,11 +9,11 @@ class Alien {
       y: 0,
     };
     
-    // Players sprite image
+    // Alien sprite image
     const image = new Image();
     image.src = './Assets/R (1).png';
     image.onload = () => {
-      // const scale = 1
+      
       this.image = image;
       // Render the images to scale of canvas.. Hard code img size causes img to squish
       this.width = image.width * 0.1;
