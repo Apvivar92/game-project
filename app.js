@@ -2,6 +2,7 @@
 let startGameDiv = document.getElementById('start-screen');
 let gameCanvas = document.getElementById('myCanvas');
 let gameOverDiv = document.getElementById('game-over');
+let gameWinDiv = document.getElementById('game-win');
 let scoreboard = document.getElementById('scoreboard');
 let scoreCounter= document.getElementById('scorecounter');
 let difficultyCounter = document.getElementById('difficultycounter');
@@ -23,6 +24,7 @@ function startGame() {
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'block';
   gameOverDiv.style.display = 'none';
+  gameWinDiv.style.display = 'none';
   scoreboard.style.display = 'block';
 
   spawnAliens();
@@ -66,8 +68,8 @@ function runGame() {
     if (aliens.length > 30) {
       gameOver();
     }
-    else if (difficultyRating == 15){
-      gameOver();
+    else if (difficultyRating == 5){
+      gameWin();
     }
 
     updateDifficultyRating();
@@ -105,6 +107,17 @@ function gameOver() {
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'none';
   gameOverDiv.style.display = 'block';
+  
+};
+
+function gameWin() {
+  updateFinalScore();
+
+  startGameDiv.style.display = 'none';
+  gameCanvas.style.display = 'none';
+  gameOverDiv.style.display = 'none';
+  gameWinDiv.style.display = 'block';
+
   
 };
 

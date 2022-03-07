@@ -17,7 +17,7 @@ nav{
 
 
 /* Move start button div to the middle */
-#start-screen, #game-over{
+#start-screen, #game-over, #game-win{
     font-family:monospace, Arial, Helvetica, sans-serif;
     text-shadow: 4px 0px black;
     color: #ffffff;
@@ -50,7 +50,7 @@ button{
 }
 
 /* Make button change when mouse hovers */
-#start-screen a:hover, #game-over a:hover{
+#start-screen a:hover, #game-over a:hover, #game-win a:hover{
     background-color: #f0ff1d;
     color: #1bafdb;
 

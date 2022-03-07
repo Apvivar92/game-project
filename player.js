@@ -93,6 +93,7 @@ class Player {
   }
 
   getPosition() {
+    console.log(this.getPosition);
     return {
       x: this.position.x,
       y: this.position.y,
