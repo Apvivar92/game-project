@@ -36,8 +36,6 @@ class Alien {
   };
 
   draw() {
-    // context.fillStyle = 'red'
-    // context.fillRect(this.position.x, this.position.y, this.width, this.height)
     if (this.image) {
       this.context.drawImage(
         this.image,

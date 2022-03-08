@@ -7,6 +7,10 @@ let scoreboard = document.getElementById('scoreboard');
 let scoreCounter= document.getElementById('scorecounter');
 let difficultyCounter = document.getElementById('difficultycounter');
 
+// 
+let runGameInterval;
+let increaseDifficultyInterval;
+
 let difficultyRating = 1;
 
 let score = 0;
@@ -30,13 +34,13 @@ function startGame() {
 
   spawnAliens();
 
-  setInterval(runGame, 15);
-  setInterval(increaseDifficulty, 10000);
+  runGameInterval = setInterval(runGame, 15);
+  increaseDifficultyInterval = setInterval(increaseDifficulty, 10000);
 };
 
 function runGame() {
   context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
-
+  
   player.update();
 
   aliens.forEach((alien, a) => {
@@ -67,7 +71,7 @@ function runGame() {
 
     // if difficulty rating = 15 = win
     // if aliens exceed over 45 = lose
-    if (aliens.length > 45) {
+    if (aliens.length > 40) {
       gameOver();
     }
     else if (difficultyRating == 15){
@@ -103,6 +107,7 @@ function spawnAliens() {
 };
 
 // Need a way to update score on the html
+// score is added for each alien shot plus the number of the difficulty rate
 function updateScore() {
   score += difficultyRating;
   scoreCounter.innerHTML = score;
@@ -120,7 +125,9 @@ function updateDifficultyRating() {
 
 // Game over screen for when player fails
 function gameOver() {
-  updateFinalScore();
+  clearInterval(runGameInterval);
+  clearInterval(increaseDifficultyInterval);
+  updateFinalScoreLoss();
 
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'none';
@@ -130,7 +137,9 @@ function gameOver() {
 };
 
 function gameWin() {
-  updateFinalScore();
+  clearInterval(runGameInterval);
+  clearInterval(increaseDifficultyInterval);
+  updateFinalScoreWin();
 
   startGameDiv.style.display = 'none';
   gameCanvas.style.display = 'none';
@@ -139,11 +148,31 @@ function gameWin() {
 
 };
 
-function updateFinalScore() {
-  let finalScore = document.getElementById('finalscore');
+function updateFinalScoreWin() {
+  let finalScore = document.getElementById('finalscorewin');
+  finalScore.innerHTML = score;
+};
+
+function updateFinalScoreLoss() {
+  let finalScore = document.getElementById('finalscoreloss');
   finalScore.innerHTML = score;
 };
 
 function reloadGame() {
   document.location.reload();
 };
+
+// let baseImage = new Image();
+// baseImage.src = 'Assets/City.png'
+// baseImage.onload = () => {
+//   baseImage = image;
+//       // Render the images to scale of canvas.. Hard code img size causes img to squish
+//       this.width = image.width * 0.1;
+//       this.height = image.height * 0.1;
+      
+//       // Aliens position
+//       this.position = {
+//         x: x,
+//         y: y,
+//       };
+// }
